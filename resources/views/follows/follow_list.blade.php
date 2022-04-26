@@ -11,6 +11,7 @@
 @endforeach
 
 @foreach($posts as $post)
+  <a href="/users/{{$post->user->id}}/users_profile">{{$post->user->images}}</a>
   <p>名前：{{$post->user->username}}</p>
   <p>投稿内容：{{$post->post}}</p>
 

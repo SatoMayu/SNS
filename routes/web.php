@@ -54,3 +54,5 @@ Route::get('/logout','Auth\LoginController@logout');
 Route::post('users/{id}/follow','UsersController@follow')->name('follow');
 
 Route::delete('users/{id}/unfollow','UsersController@unfollow')->name('unfollow');
+
+Route::get('users/{id}/users_profile','UsersController@showUsersProfile');

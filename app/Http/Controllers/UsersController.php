@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\Post;
 
 class UsersController extends Controller
 {
@@ -55,5 +56,17 @@ class UsersController extends Controller
         }
         return back();
     }
+
+
+    // ユーザープロフィール
+    public function showUsersProfile($id)
+    {
+        $profile_id=User::find($id);
+        $tweets=Post::where('user_id',$id)->latest()->get();
+        
+
+        return view('users.users_profile',compact('profile_id','tweets'));
+    }
+
 
 }
