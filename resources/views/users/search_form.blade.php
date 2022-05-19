@@ -28,7 +28,7 @@
           {{method_field('DELETE')}}
 
           <button type="submit" >フォロー解除</button>
-          </form>
+        </form>
 
         @else
 

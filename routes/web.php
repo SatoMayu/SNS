@@ -23,7 +23,7 @@
 Route::get('/login', 'Auth\LoginController@login');
 Route::post('/login', 'Auth\LoginController@login');
 
-Route::get('/register', 'Auth\RegisterController@register');
+Route::get('/register', 'Auth\RegisterController@registerForm');
 Route::post('/register', 'Auth\RegisterController@register');
 
 Route::get('/added', 'Auth\RegisterController@added');
@@ -38,9 +38,6 @@ Route::post('/profile/update','UsersController@profileUpdate');
 
 Route::get('/search-form','UsersController@index');
 Route::post('/search','UsersController@search');
-
-// Route::get('/follow-list','FollowsController@followList');
-// Route::get('/follower-list','FollowsController@followerList');
 
 Route::get('/follow-list','PostsController@followList');
 Route::get('/follower-list','PostsController@followerList');
