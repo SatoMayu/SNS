@@ -3,16 +3,15 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 use App\User;
 use App\Post;
+use Auth;
+use App\Http\Requests\RegisterFormRequest;
 
 class UsersController extends Controller
 {
     //
-    public function profile()
-    {
-        return view('users.profile');
-    }
 
     public function index()
     {
@@ -58,15 +57,72 @@ class UsersController extends Controller
     }
 
 
-    // ユーザープロフィール
+    // 他ユーザープロフィール
     public function showUsersProfile($id)
     {
         $profile_id=User::find($id);
-        $tweets=Post::where('user_id',$id)->latest()->get();
-        
+        $tweets=Post::with('user')->where('user_id',$id)->get();
+        // $tweets=Post::where('user_id',$id)->latest()->get();
+        // ↑これだと負荷がかかってしまうので、withでメソッドを使ってあげる
 
         return view('users.users_profile',compact('profile_id','tweets'));
     }
 
+    // ログインユーザーのプロフィール
+     public function profile()
+    {
+        $user=auth()->user();
+
+        return view('users.profile',compact('user'));
+    }
+
+
+    // public function validator($data)
+    // {
+    //     return Validator::make($data, [
+    //         'name' => 'required|string|max:255',
+    //         'mail' => 'required|string|email|max:255|unique:users',
+    //         'password' => 'required|string|min:4|confirmed',
+    //         'password_confirm' => 'required|string|min:4|confirmed',
+    //         'bio' => 'required|string|min:4|confirmed',
+
+
+    //     ]);
+    // }
+
+
+    public function profileUpdate(RegisterFormRequest $request)
+    {
+        $user=auth()->user();
+
+
+
+        $username=$request->input('name');
+        $mail=$request->input('mail');
+        $password=$request->input('password');
+        // $password_confirm=$request->input('password_confirm');
+        $bio=$request->input('bio');
+
+        $image=$request->file('image');
+        $path=$user->images;
+        if (isset($image)){
+            $path=$image->store('public');
+            // ↑↑ store('任意のディレクトリ')
+            User::where('id',Auth::user()->id)->update([
+                'images'=>$path
+            ]);
+        }
+
+
+        User::where('id',Auth::user()->id)->update([
+            'username' => $username,
+            'mail' => $mail,
+            'password' => bcrypt($password),
+            'bio' => $bio,
+
+        ]);
+        return redirect('/top');
+
+    }
 
 }
