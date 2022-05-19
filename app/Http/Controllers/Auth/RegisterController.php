@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\Request;
+use App\Http\Requests\RegisterFormRequest;
 
 class RegisterController extends Controller
 {
@@ -55,6 +56,14 @@ class RegisterController extends Controller
         ]);
     }
 
+
+    // 追記した箇所↓↓
+    public function redirectPath()
+    {
+        return '/index';
+    }
+    // 追記した箇所↑↑
+
     /**
      * Create a new user instance after a valid registration.
      *
@@ -64,35 +73,47 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         return User::create([
-            'username' => $data['username'],
+            'username' => $data['name'],
             'mail' => $data['mail'],
             'password' => bcrypt($data['password']),
         ]);
     }
-
-    // 追記した箇所↓↓
-    public function redirectPath()
+    public function added()
     {
-        return '/index';
+        return view('auth.added');
     }
-    // 追記した箇所↑↑
 
+    public function registerForm()
+    {
+        return view('auth.register_form');
+    }
 
-    // public function registerForm(){
-    //     return view("auth.register");
-    // }
-
-    public function register(Request $request){
+    public function register(registerFormRequest $request)
+    {
         if($request->isMethod('post')){
             $data = $request->input();
-
             $this->create($data);
             return redirect('added');
         }
-        return view('auth.register');
+
+        return view("auth.register_form");
     }
 
-    public function added(){
-        return view('auth.added');
-    }
+    // public function register(Request $request){
+    //     if($request->isMethod('post')){
+    //         $data = $request->input();
+
+    //         $validator = $this->validator($data);
+
+    //         if ($validator->fails()) {
+    //             return redirect('/register')
+    //             ->withErrors($validator)
+    //             ->withInput();
+    //         }
+
+    //         $this->create($data);
+    //         return redirect('added');
+    //     }
+    //     return view('auth.register');
+    // }
 }
