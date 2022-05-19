@@ -27,7 +27,7 @@
             <div id="">
                 <div id="">
 
-                    <p>{{Auth::user()->username}}さん<img src="images/icon1.png"></p>
+                    <p>{{Auth::user()->username}}さん<img src="{{asset('storage'.Auth::user()->images)}}"></p>
                 <div>
                 <ul>
                     <li><a href="/top">ホーム</a></li>
@@ -43,7 +43,7 @@
         </div >
         <div id="side-bar">
             <div id="confirm">
-                <p>〇〇さんの</p>
+                <p>{{Auth::user()->username}}さんの</p>
                 <div>
                 <p>フォロー数</p>
                 <p>{{Auth::user()->follows()->get()->count()}}名</p>
