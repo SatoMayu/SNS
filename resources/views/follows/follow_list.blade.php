@@ -5,7 +5,7 @@
 <h1>Follow List</h1>
 @foreach ($following_users as $following_user)
 
-  <p>{{$following_user->images}}</p>
+  <a href="/users/{{$following_user->id}}/users_profile">{{$following_user->images}}</a>
   <p>{{$following_user->username}}</p>
 
 @endforeach

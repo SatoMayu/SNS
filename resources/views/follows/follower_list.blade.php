@@ -3,12 +3,9 @@
 
 <h1>Follower List</h1>
 @foreach ($followed_users as $followed_user)
-<table>
-    <tr>
-      <td>{{$followed_user->images}}</td>
-      <td>{{$followed_user->username}}</td>
-    </tr>
-    </table>
+  <a href="/users/{{$followed_user->id}}/users_profile">{{$followed_user->images}}</a></td>
+  <p>{{$followed_user->username}}</p>
+
 @endforeach
 
 @foreach($posts as $post)
