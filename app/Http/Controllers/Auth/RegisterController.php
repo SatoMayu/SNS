@@ -93,7 +93,7 @@ class RegisterController extends Controller
         if($request->isMethod('post')){
             $data = $request->input();
             $this->create($data);
-            return redirect('added');
+            return redirect('added')->with('name',$data['name']);
         }
 
         return view("auth.register_form");
