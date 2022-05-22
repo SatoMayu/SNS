@@ -15,7 +15,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'username', 'mail', 'password',
+        'username', 'mail', 'password','images',
     ];
 
     /**
@@ -31,7 +31,7 @@ class User extends Authenticatable
         return $this -> hasMany('App\Post');
     }
 
-    
+
 
         public function followers()
     {
