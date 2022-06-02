@@ -22,10 +22,50 @@
       <td>{{$list->user->username}}</td>
       <td>{{$list->post}}</td>
       <td>{{$list->created_at}}</td>
-      <td><a class="btn btn-primary" href="/posts/{{$list->id}}/update-form">更新</a></td>
+
+      @if($list->user->id == auth()->user()->id)
+      <td>
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter" post="{{ $list->post }}" post_id="{{ $list->id }}">
+          編集
+        </button>
+
+      </td>
+
+
+      <!-- Modal -->
+      <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalCenterTitle">Modal title</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+               <form action="" method="">
+                <textarea name="" class="modal_post"></textarea>
+                <input type="hidden" name="" class="modal_id" value="">
+                <input type="submit" value="更新">
+
+           </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 削除ボタン -->
       <td><a class="btn btn-danger" href="/posts/{{$list->id}}/delete" onclick="return confirm('こちらの投稿を削除してもよろしいでしょうか？')">削除</a></td>
+      @endif
     </tr>
+
   @endforeach
 </table>
+
 
 @endsection
