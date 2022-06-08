@@ -5,7 +5,7 @@
 <div>
   <form action="http://127.0.0.1:8000/posts/create" method="post">
     @csrf
-    <textarea name="newPost" placeholder="投稿内容を入力してください"></textarea>
+    <input type="text" name="newPost" placeholder="投稿内容を入力してください"></input>
     <button type="submit" class="btn btn-success pull-right"><img src="images/post.png" alt="投稿ボタン"></button>
   </form>
 
@@ -52,9 +52,9 @@
             <div class="modal-body">
               <form action="/posts/{{$list->id}}/update" method="POST">
                  @csrf
-                <input type="text" name="" class="modal_post" value="{{$list->post}}"></input>
+                <input type="text" name="upPost" class="modal_post" value="{{$list->post}}"></input>
 
-                <input type="hidden" name="" class="modal_id" value="">
+                <input type="hidden" name="id" class="modal_id" value="{{$list->id}}">
                 <input type="submit" value="更新">
 
               </form>
