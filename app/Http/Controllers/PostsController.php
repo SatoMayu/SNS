@@ -38,9 +38,16 @@ class PostsController extends Controller
     public function delete($id)
     {
         Post::where('id',$id)->delete();
-
         return redirect('/top');
+    }
 
+    public function update(Request $request)
+    {
+        $id = $request->input('id');
+        dd($id);
+        $up_post = $request->input('upPost');
+        Post::where('id',$id)->update(['post' => $up_post]);
+        return redirect('/top');
     }
 
     // フォローリスト
