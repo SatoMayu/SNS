@@ -32,6 +32,10 @@ class UsersController extends Controller
 
             return view('users.search_form',compact('users','keyword_name'));
         }
+
+        else{
+            return redirect('/search-form');
+        }
     }
 
     public function follow($id)
