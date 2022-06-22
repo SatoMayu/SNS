@@ -38,11 +38,11 @@
                     <nav class="menu">
                         <ul>
                             <li><a href="/top">ホーム</a></li>
-                            <li><a href="/profile">プロフィール</a></li>
+                            <li><a href="/profile">プロフィール編集</a></li>
                             <li><a href="/logout">ログアウト</a></li>
                         </ul>
                     </nav>
-                    <img src="{{asset('storage'.Auth::user()->images)}}">
+                    <img src="{{asset('storage/'.Auth::user()->images)}}">
         </div>
     </header>
     <div id="row">
