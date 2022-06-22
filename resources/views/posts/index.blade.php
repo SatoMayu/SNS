@@ -18,7 +18,7 @@
 <table>
   @foreach($list as $list)
     <tr>
-      <td>{{$list->user->images}}</td>
+      <td><img src="{{asset('storage/'.$list->user->images)}}"></td>
       <td>{{$list->user->username}}</td>
       <td>{{$list->post}}</td>
       <td>{{$list->created_at}}</td>
@@ -52,11 +52,13 @@
             <div class="modal-body">
               <form action="/posts/{{$list->id}}/update" method="POST">
                  @csrf
-                <input type="text" name="upPost" class="modal_post" value="{{$list->post}}"></input>
 
-                <input type="hidden" name="id" class="modal_id" value="{{$list->id}}">
+                 <!-- 変更した投稿内容の受け渡し -->
+                <input type="text" name="upPost" class="modal_post" value="{{$list->post}}">
+                <!-- 変更した投稿のidの受け渡し -->
+                <input type="hidden" name="post_id" class="modal_id" value="{{$list->id}}">
+
                 <input type="submit" value="更新">
-
               </form>
             </div>
             <!-- 投稿編集フォーム終了 -->
