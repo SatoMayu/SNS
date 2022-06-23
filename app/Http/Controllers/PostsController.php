@@ -13,10 +13,15 @@ class PostsController extends Controller
     //タイムライン
     public function index()
     {
-        $list = Post::latest()->get();
+        // $list = Post::latest()->get();
         // $list = \DB::table('posts')->get();に書き換え可能
         // ↑DB内のpostsテーブルからgetしてきた内容を代入
         // latestでレコードを新しい順にソート
+
+        $following_id = Auth::user()->follows()->pluck('follows.followed_id');
+
+        $list = Post::with('user')->whereIn('user_id',$following_id)->orWhere('user_id',Auth::id())->latest()->get();
+
         return view('posts.index',['list'=>$list]);
     }
 
@@ -43,7 +48,7 @@ class PostsController extends Controller
 
     public function update(Request $request)
     {
-        $id = $request->input('id');
+        $id = $request->input('post_id');
         $up_post = $request->input('upPost');
         Post::where('id',$id)->update(['post' => $up_post]);
         return redirect('/top');
@@ -53,12 +58,11 @@ class PostsController extends Controller
     public function followList()
     {
         $following_id = Auth::user()->follows()->pluck('follows.followed_id');
-// dd($following_id);
+
         $posts = Post::with('user')->whereIn('user_id',$following_id)->latest()->get();
-// dd($posts);
+
         $following_users = Auth::user()->whereIn('id',$following_id)->get();
 
-        // dd($following_users);
         return view('follows.follow_list',compact('posts','following_users'));
     }
 
