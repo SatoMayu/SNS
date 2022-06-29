@@ -23,7 +23,7 @@
 <body>
   <header>
     <h1><img src="images/atlas.png"></h1>
-    <p>Social Network Service</p>
+    <h2 class="subtitle">Social Network Service</h2>
   </header>
   <div id="container">
     @yield('content')
