@@ -88,7 +88,7 @@ class RegisterController extends Controller
         return view('auth.register_form');
     }
 
-    public function register(registerFormRequest $request)
+    public function register(RegisterFormRequest $request)
     {
         if($request->isMethod('post')){
             $data = $request->input();
