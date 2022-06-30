@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Validator;
 use App\User;
 use App\Post;
 use Auth;
-use App\Http\Requests\RegisterFormRequest;
+use App\Http\Requests\UpdateFormRequest;
 
 class UsersController extends Controller
 {
@@ -95,8 +95,9 @@ class UsersController extends Controller
     // }
 
 
-    public function profileUpdate(RegisterFormRequest $request)
+    public function profileUpdate(UpdateFormRequest $request)
     {
+
         $user=auth()->user();
 
 
@@ -109,11 +110,17 @@ class UsersController extends Controller
 
         $image=$request->file('image');
         $path=$user->images;
-        if (isset($image)){
-            $path=$image->store('public');
-            // ↑↑ store('任意のディレクトリ')
+
+        // if (isset($image)){
+        //     $path=$image->store('');
+        //     // ↑↑ store('任意のディレクトリ')
+        if($request->file('image')){
+            $file_name = $request->file('image')->getClientOriginalName();
+
+            $request->file('image')->storeAs('public',$file_name);
+
             User::where('id',Auth::user()->id)->update([
-                'images'=>$path
+                'images'=>$file_name
             ]);
         }
 
