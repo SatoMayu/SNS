@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Auth;
 use App\Post;
 use App\User;
-
+use App\Http\Requests\RegisterFormRequest;
 
 class PostsController extends Controller
 {
@@ -29,6 +29,7 @@ class PostsController extends Controller
     public function create(Request $request)
     {
         $post = $request->input('newPost');
+
         Post::create([
         // \DB::table('posts')->insert([
             'post'=>$post,
