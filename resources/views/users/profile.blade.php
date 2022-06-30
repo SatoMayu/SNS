@@ -2,6 +2,16 @@
 
 @section('content')
 
+
+@if ($errors->any())
+    <div class="alert alert-danger mt-3">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
 <img src="{{asset('storage/profiles/'.$user->images)}}" alt="プロフィール画像">
 
 <form action="/profile/update" method="POST" enctype="multipart/form-data">
@@ -33,7 +43,7 @@
   <p>
     icon image <input type="file" name="image">
   </p>
-
+  <input type="hidden" value="{{$user->id}}" name="id">
   <button type="submit" alt="更新ボタン">更新する</button>
 
 </form>
