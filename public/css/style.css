@@ -16,6 +16,15 @@ ul {
     list-style: none;
 }
 
+button {
+    vertical-align: bottom;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    appearance: none;
+}
+
 textarea {
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -108,7 +117,7 @@ header {
     text-align: center;
     /* justify-content: flex-end; */
     display: flex;
-    background-color: pink;
+    background-color: #186AC9;
     font-size: 20px;
     cursor: pointer;
     width: 200px;
@@ -155,6 +164,7 @@ header {
 
 
 .menu {
+    display: none;
     position: absolute;
     top: 75px;
     width: 30%;
@@ -178,6 +188,7 @@ li {
 }
 
 .menu.is-open {
+    display: block;
     opacity: 1;
     transform: translateY(0);
 }
@@ -232,15 +243,12 @@ li {
     vertical-align: top;
 }
 
-.post-form button {
-    vertical-align: bottom;
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
-    outline: none;
-    appearance: none;
-}
-
 .post-form_input::placeholder {
     color: #aaa;
+}
+
+/* 投稿一覧 */
+
+.tweet-list {
+    border-bottom: #000;
 }
