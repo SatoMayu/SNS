@@ -24,17 +24,15 @@
 </head>
 <body>
     <header>
-        <div id = "head">
-        <h1><a href="/top"><img src="images/atlas.png"></a></h1>
-            <div id="">
-                <div id="">
-
-                    <p>{{Auth::user()->username}}さん</p>
-
-                    <!-- アコーディオンメニュー開始 -->
-                    <button type="button" class="menu-btn">
-                        <span class="inn"></span>
-                    </button>
+        <div id = "site-header">
+            <div class = "site-header_inner">
+                <h1 class="site-header_title"><a href="/top"><img class = "site-header_title-logo" src="images/atlas.png" alt="atlas"></a></h1>
+                <!-- アコーディオンメニュー開始 -->
+                <div class="site-header_menu">
+                    <h3 class="menu-btn">
+                        {{Auth::user()->username}}さん
+                    </h3>
+                    <img src="{{asset('storage/'.Auth::user()->images)}}" class="icon">
                     <nav class="menu">
                         <ul>
                             <li><a href="/top">ホーム</a></li>
@@ -42,8 +40,11 @@
                             <li><a href="/logout">ログアウト</a></li>
                         </ul>
                     </nav>
-                    <img src="{{asset('storage/'.Auth::user()->images)}}">
+                </div>
+                <!-- .accordion -->
+            </div>
         </div>
+
     </header>
     <div id="row">
         <div id="container">
@@ -63,7 +64,7 @@
                 </div>
                 <p class="btn"><a href="/follower-list">フォロワーリスト</a></p>
             </div>
-            <p class="btn"><a href="/search-form">ユーザー検索</a></p>
+            <p class="btn btn-primary"><a href="/search-form">ユーザー検索</a></p>
         </div>
     </div>
     <footer>
