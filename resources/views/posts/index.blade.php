@@ -2,23 +2,25 @@
 
 @section('content')
 <!-- ↓↓投稿フォーム開始↓↓ -->
-<div>
+<div class="post-form">
   <form action="http://127.0.0.1:8000/posts/create" method="post">
+    <img src="{{asset('storage/'.Auth::user()->images)}}" class="icon">
     @csrf
-    <input type="text" name="newPost" placeholder="投稿内容を入力してください"></input>
-    <button type="submit" class="btn btn-success pull-right"><img src="images/post.png" alt="投稿ボタン"></button>
+    <textarea type="text" name="newPost" placeholder="投稿内容を入力してください" class="post-form_area"></textarea>
+    <button type="submit"><img src="images/post.png" alt="投稿ボタン"></button>
   </form>
-
+  <div>{{$errors->first('newPost')}}</div>
 </div>
 
 <!-- ↑↑投稿フォーム終了↑↑ -->
 
-<h2>機能を実装していきましょう。</h2>
 
-<table>
-  @foreach($list as $list)
+<div class = "tweet-list">
+
+  <table>
+    @foreach($list as $list)
     <tr>
-      <td><img src="{{asset('storage/'.$list->user->images)}}"></td>
+      <td><img src="{{asset('storage/'.$list->user->images)}}" class="tweet-list_icon"></td>
       <td>{{$list->user->username}}</td>
       <td>{{$list->post}}</td>
       <td>{{$list->created_at}}</td>
@@ -33,8 +35,8 @@
       </td> -->
 
       <td>
-        <a class="js-modal-open btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter{{$list->id}}" href="" >
-        編集
+        <a class="js-modal-open btn" data-toggle="modal" data-target="#exampleModalCenter{{$list->id}}" href="" >
+        <img src="images/edit.png" alt="編集ボタン">
         </a>
       </td>
 
@@ -51,9 +53,9 @@
             <!-- 投稿編集フォーム開始 -->
             <div class="modal-body">
               <form action="/posts/{{$list->id}}/update" method="POST">
-                 @csrf
+                @csrf
 
-                 <!-- 変更した投稿内容の受け渡し -->
+                <!-- 変更した投稿内容の受け渡し -->
                 <input type="text" name="upPost" class="modal_post" value="{{$list->post}}">
                 <!-- 変更した投稿のidの受け渡し -->
                 <input type="hidden" name="post_id" class="modal_id" value="{{$list->id}}">
@@ -72,12 +74,13 @@
 
 
       <!-- 削除ボタン -->
-      <td><a class="btn btn-danger" href="/posts/{{$list->id}}/delete" onclick="return confirm('こちらの投稿を削除してもよろしいでしょうか？')">削除</a></td>
+      <td><a href="/posts/{{$list->id}}/delete" onclick="return confirm('こちらの投稿を削除してもよろしいでしょうか？')"><img src="images/trash.png" alt="削除ボタン"></a></td>
       @endif
     </tr>
 
-  @endforeach
-</table>
+    @endforeach
+  </table>
+</div>
 
 
 @endsection

@@ -4,10 +4,47 @@ html {}
 
 body {}
 
+img{
+    height: 72px;
+}
+
+div {
+    display: block;
+}
+
+ul {
+    list-style: none;
+}
+
+textarea {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    resize: none;
+    outline: none;
+    padding: 0;
+    border: 0;
+    background: transparent;
+}
+
 /* header */
 header {
     background: #186AC9;
+    display: block;
 }
+
+
+/* .head nav {
+    margin-left: auto;
+}
+
+.head ul {
+    display: flex;
+}
+
+.head ul li {
+    margin-left: 20px;
+} */
 
 /* main content */
 #row {
@@ -16,12 +53,133 @@ header {
 }
 
 #container {
-    flex: 0 0 80%;
+    flex:0 0 80%;
+    padding: 0% 3%;
+
 }
 
 #side-bar {
     flex: 0 0 19%;
     border-left: 1px solid #727272;
+}
+
+
+/* アコーディオンメニュー */
+#site-header {
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 72px;
+    z-index: 9999;
+}
+
+.site-header_inner {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 3%;
+    position: relative;
+}
+
+.site-header_title {
+    line-height: 1;
+    font-size: 1rem;
+}
+
+.site-header_title-logo {
+    height: 50px;
+    /* width: 50%; */
+    margin: 0 0 auto 0;
+}
+
+.site-header_menu {
+    display: flex;
+    flex: 0 0 19%;
+    align-items: center;
+    /* justify-content: flex-end; */
+    /* margin: 0 0 0 auto; */
+    /* width: 300px; */
+    /* height: 72px; */
+    /* position: relative; */
+}
+
+.menu-btn {
+    line-height: 350%;
+    text-align: center;
+    /* justify-content: flex-end; */
+    display: flex;
+    background-color: pink;
+    font-size: 20px;
+    cursor: pointer;
+    width: 200px;
+    height: 72px;
+    margin: 0 0 0 auto;
+    position: relative;
+    outline: initial;
+}
+
+/* &:focus-visible {
+        box-shadow: 0 0 0 2px blue;
+    } */
+
+/* .inn {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: block;
+} */
+
+.menu-btn::after {
+
+    align-items: center;
+    cursor: pointer;
+    position: absolute;
+    content: "";
+    display: block;
+    top: 40%;
+    left: 90%;
+    width: 15px;
+    height: 15px;
+    transform: translate(-50%, -40%) rotate(135deg);
+    border-top: 1px solid #000;
+    border-right: 1px solid #000;
+    transition: 0.3s ease;
+    /* position: absolute; */
+}
+
+.menu-btn.is-open::after {
+
+    top: 60%;
+    transform: translate(-50%, -60%) rotate(-45deg);
+}
+
+
+.menu {
+    position: absolute;
+    top: 75px;
+    width: 30%;
+    right: 1px;
+    background-color: #fff;
+    opacity: 0;
+    transition: .3s ease-in-out;
+    /* transform: translateY(-1px); */
+}
+
+ul {
+    border-bottom: 1px solid #000;
+}
+
+li {
+    height: 60px;
+    border-top: 1px solid #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.menu.is-open {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 /* モーダル */
@@ -55,72 +213,34 @@ header {
     width: 60%;
 }
 
-/* アコーディオンメニュー */
-
-.menu-btn {
-    width: 60px;
-    height: 60px;
-    position: absolute;
-    top: 1px;
-    right: 1px;
-    outline: initial;
-}
-    /* &:focus-visible {
-        box-shadow: 0 0 0 2px blue;
-    } */
-
-    .inn {
-        position: relative;
-        width: 100%;
-        height: 100%;
-        display: block;
-    }
-
-        .inn::after {
-            position: absolute;
-            content: "";
-            top: 40%;
-            left: 50%;
-            width: 15px;
-            height: 15px;
-            transform: translate(-50%, -40%) rotate(135deg);
-            border-top: 1px solid #000;
-            border-right: 1px solid #000;
-            transition: 0.3s ease;
-    }
-
-.inn.is-open::after{
-
-            top: 60%;
-            transform: translate(-50%, -60%) rotate(-45deg);
-        }
-
-
-.menu {
-
-    position: absolute;
-    top: 60px;
-    width: 30%;
-    right: 1px;;
-    background-color: #fff;
-    opacity: 0;
-    transition: .3s ease-in-out;
-    /* transform: translateY(-1px); */
+/* 新規投稿フォーム */
+.post-form {
+    border-bottom: black;
+    margin-top: 8px;
+    margin-bottom: 8px;
 }
 
-    ul {
-        border-bottom: 1px solid #000;
-    }
+.post-form_area {
+    position: relative;
+    /* border: none; */
+    /* outline: none; */
+    width: 60%;
+    height: 10rem;
+}
 
-        li {
-            height: 60px;
-            border-top: 1px solid #000;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
+.post-form img {
+    vertical-align: top;
+}
 
-.menu.is-open {
-    opacity: 1;
-    transform: translateY(0);
+.post-form button {
+    vertical-align: bottom;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    appearance: none;
+}
+
+.post-form_input::placeholder {
+    color: #aaa;
 }

@@ -12,7 +12,7 @@ body{
 
 header{
     text-align: center;
-    margin-top: 180px;
+    margin-top: 10%;
     position: relative;
 }
 
@@ -28,13 +28,13 @@ img{
 /* ↓↓黒枠内 */
 #container {
     width: 350px;
-    height: 400px;
+    height: auto;
     background-color: rgba(0,0,0,0.2);
     border-radius: 10px;
     position: absolute;
-    top: 70%;
+    top: 77%;
     left: 50%;
-    transform: translateY(-70%) translateX(-50%);
+    transform: translateY(-77%) translateX(-50%);
     padding:35px;
 }
 
@@ -45,10 +45,48 @@ h3{
     text-align: center;
 }
 /* フォーム */
-div {
+/* div {
     margin-bottom: 20px;
+} */
+
+.section{
+    /* padding-top: 15%; */
+    padding-bottom: 8%;
 }
 
 label,input {
     display: block;
+}
+
+label{
+    color: white;
+    font-size: 20px;
+    padding-top: 8%;
+}
+
+input{
+    border-radius:5px ;
+    font-size: 20px;
+    display: block;
+    text-align: left;
+}
+
+input[type="submit"]{
+    color: white;
+    display: block;
+    margin-left: auto;
+    text-align: center;
+    background-color: red;
+    border: none;
+    font-size: 20px;
+    padding: 3%;
+}
+
+p{
+    color: white;
+    font-size: 20px;
+    padding: 10px;
+    text-align: center;
+    /* position: absolute; */
+    margin-top: 10%;
 }
