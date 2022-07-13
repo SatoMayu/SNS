@@ -15,30 +15,39 @@
 <!-- ↑↑投稿フォーム終了↑↑ -->
 
 
-<div class = "tweet-list">
+<div class = "tweet-container">
 
-  <table>
+
     @foreach($list as $list)
-    <tr>
-      <td><img src="{{asset('storage/'.$list->user->images)}}" class="tweet-list_icon"></td>
-      <td>{{$list->user->username}}</td>
-      <td>{{$list->post}}</td>
-      <td>{{$list->created_at}}</td>
+      <div class = "tweet-list">
+        <div class = "tweet-list_left">
+          <td><img src="{{asset('storage/'.$list->user->images)}}" class="tweet-list_icon"></td>
+          <div class ="tweet-list_left_inner">
+            <p>{{$list->user->username}}</p>
+            <p>{{$list->post}}</p>
+          </div>
+        </div>
+        <div class ="tweet-list_right">
+          <td>{{$list->created_at}}</td>
 
-      @if($list->user->id == auth()->user()->id)
+          @if($list->user->id == auth()->user()->id)
 
-      <!-- Button trigger modal -->
-      <!-- <td>
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter" post="{{ $list->post }}" post_id="{{ $list->id }}">
-          編集
-        </button>
+          <!-- Button trigger modal -->
+          <!-- <td>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter" post="{{ $list->post }}" post_id="{{ $list->id }}">
+              編集
+            </button>
       </td> -->
 
-      <td>
-        <a class="js-modal-open btn" data-toggle="modal" data-target="#exampleModalCenter{{$list->id}}" href="" >
-        <img src="images/edit.png" alt="編集ボタン">
-        </a>
-      </td>
+      <div class = "tweet-list_right_buttons">
+
+        <td>
+          <div class = "edit_button">
+            <a class="js-modal-open btn" data-toggle="modal" data-target="#exampleModalCenter{{$list->id}}" href="" >
+              <img src="images/edit.png" alt="編集ボタン">
+            </a>
+          </div>
+        </td>
 
 
       <!-- Modal -->
@@ -60,7 +69,7 @@
                 <!-- 変更した投稿のidの受け渡し -->
                 <input type="hidden" name="post_id" class="modal_id" value="{{$list->id}}">
 
-                <input type="submit" value="更新">
+                <button type="submit"><img src="images/edit.png" alt="投稿ボタン"></button>
               </form>
             </div>
             <!-- 投稿編集フォーム終了 -->
@@ -74,12 +83,19 @@
 
 
       <!-- 削除ボタン -->
-      <td><a href="/posts/{{$list->id}}/delete" onclick="return confirm('こちらの投稿を削除してもよろしいでしょうか？')"><img src="images/trash.png" alt="削除ボタン"></a></td>
+      <td>
+        <div class = "delete_button">
+          <a href="/posts/{{$list->id}}/delete" onclick="return confirm('こちらの投稿を削除してもよろしいでしょうか？')"><img src="images/trash.png" alt="削除ボタン"></a>
+        </div>
+      </td>
+    </div>
       @endif
-    </tr>
+    </div>
 
-    @endforeach
-  </table>
+    </div>
+
+      @endforeach
+
 </div>
 
 

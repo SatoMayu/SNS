@@ -16,6 +16,15 @@ ul {
     list-style: none;
 }
 
+a {
+    color: #fff;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
 button {
     vertical-align: bottom;
     background-color: transparent;
@@ -70,6 +79,7 @@ header {
 #side-bar {
     flex: 0 0 19%;
     border-left: 1px solid #727272;
+    padding: 0% 3%;
 }
 
 
@@ -226,7 +236,7 @@ li {
 
 /* 新規投稿フォーム */
 .post-form {
-    border-bottom: black;
+    border-bottom: solid 4px #aaa;
     margin-top: 8px;
     margin-bottom: 8px;
 }
@@ -250,5 +260,31 @@ li {
 /* 投稿一覧 */
 
 .tweet-list {
-    border-bottom: #000;
+    padding-top: 1rem;
+    border-bottom: solid 1px #000;
+    display: flex;
+    justify-content: space-between;
+}
+
+.tweet-list_left {
+    display: flex;
+}
+
+.tweet-list_right_buttons {
+    display: flex;
+}
+
+.tweet-list_right_buttons img {
+    height: 50px;
+}
+
+/* サイドバー */
+#confirm a {
+    color: #fff;
+}
+
+#confirm .btn {
+    color: #fff;
+    background-color: #007bff;
+    border-radius: ;
 }
