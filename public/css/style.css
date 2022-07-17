@@ -190,15 +190,15 @@ li {
 
 /* 新規投稿フォーム */
 .post-form {
-    padding: 0% 3%;
+    padding: 1% 8%;
     margin-top: 8px;
-    margin-bottom: 8px;
+    margin-bottom: 10px;
 }
 
 .post-form_area {
     position: relative;
     width: 60%;
-    height: 180px;
+    height: 160px;
 }
 
 .post-form img {
@@ -261,6 +261,7 @@ li {
 .tweet-list_left_inner {
     margin-left: 20px;
 }
+
 .tweet-list_right_buttons {
     display: flex;
     align-items: end;
@@ -270,10 +271,10 @@ li {
 .tweet-list_right_buttons img {
     height: 40px;
     background-color: #fff;
-    padding: 8px ;
+    padding: 8px;
 }
 
-.edit_button .btn{
+.edit_button .btn {
     padding: 5px;
 }
 
@@ -342,20 +343,39 @@ li {
     justify-content: center;
 }
 
-/* フォローリスト */
+/* フォローフォロワーリスト */
 .first_content_wrap {
-    padding: 0% 3%;
+    padding: 1% 8%;
     margin-top: 8px;
-    margin-bottom: 8px;
+    margin-bottom: 10px;
     display: flex;
 }
 
 .first_content_wrap h1 {
     font-size: 30px;
-    padding-right:  30px;
+    padding-right: 70px;
 }
+
 .follow-list_icons {
     display: flex;
     margin: 0 10px;
     padding: 0 10px;
 }
+
+/* 他ユーザーのプロフィール */
+
+.profile {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    /* margin-left: 20px; */
+}
+
+.label {
+    margin: 0 20px;
+}
+
+.items {
+    flex-grow: 2;
+}
+
