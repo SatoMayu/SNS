@@ -44,7 +44,7 @@
 
           <!-- Modal -->
           <div class="modal fade" id="exampleModalCenter{{$list->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-test modal-test-centered modal-dialog modal-dialog-centered " role="document">
               <div class="modal-content">
                 <div class="modal-header">
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -56,12 +56,13 @@
                   <form action="/posts/{{$list->id}}/update" method="POST">
                     @csrf
                     <!-- 変更した投稿内容の受け渡し -->
-                    <input type="text" name="upPost" class="modal_post" value="{{$list->post}}">
+                    <input type="text" name="upPost" class="modal_post" value="{{$list->post}}"></input>
                     <!-- 変更した投稿のidの受け渡し -->
-                    <input type="hidden" name="post_id" class="modal_id" value="{{$list->id}}">
-
-                    <button type="submit"><img src="images/edit.png" alt="投稿ボタン"></button>
-                  </form>
+                    <input type="hidden" name="post_id" class="modal_id" placeholder="aiu"value="{{$list->id}}"></input>
+                    <div class = "post-update-btn">
+                      <button type="submit"><img src="images/edit.png" alt="投稿ボタン"></button>
+                    </div>
+                    </form>
                 </div>
                 <!-- 投稿編集フォーム終了 -->
                 <!-- <div class="modal-footer">
