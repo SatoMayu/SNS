@@ -9,7 +9,6 @@
     <title></title>
 
     <link rel="stylesheet" href="{{ asset('css/reset.css') }} ">
-    <link rel="stylesheet" href="{{ asset('css/style.css') }} ">
     <!--スマホ,タブレット対応-->
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <!--サイトのアイコン指定-->
@@ -20,7 +19,8 @@
     <!--iphoneのアプリアイコン指定-->
     <link rel="apple-touch-icon-precomposed" href="画像のURL" />
     <!--OGPタグ/twitterカード-->
-     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ asset('css/style.css') }} ">
 </head>
 <body>
     <header>
@@ -35,7 +35,7 @@
                     <img src="{{asset('storage/'.Auth::user()->images)}}" class="icon">
                     <nav class="menu">
                         <ul>
-                            <li><a href="/top">ホーム</a></li>
+                            <li class = "list1"><a href="/top">ホーム</a></li>
                             <li><a href="/profile">プロフィール編集</a></li>
                             <li><a href="/logout">ログアウト</a></li>
                         </ul>
