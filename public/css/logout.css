@@ -90,3 +90,35 @@ p{
     /* position: absolute; */
     margin-top: 10%;
 }
+
+/* added.blade */
+
+#clear {
+    margin: 0 auto;
+}
+.inner {
+    margin-bottom: 80px;
+}
+
+.inner p {
+    font-size: 18px;
+    padding: 0;
+    margin: 5% auto;
+    color: white;
+    margin-top: 5%;
+}
+
+a {
+    color: white;
+    text-decoration: none;
+    display: block;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+.btn {
+    /* display: flex;
+    justify-content: center; */
+}
