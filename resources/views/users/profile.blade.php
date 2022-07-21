@@ -2,50 +2,51 @@
 
 @section('content')
 
+<div class = "profile-wrap">
 
-@if ($errors->any())
-    <div class="alert alert-danger mt-3">
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-@endif
-<img src="{{asset('storage/profiles/'.$user->images)}}" alt="プロフィール画像">
 
-<form action="/profile/update" method="POST" enctype="multipart/form-data">
-  @csrf
-  <p>
-    user name <input type="text" name="name" value={{$user->username}}>
-  </p>
-  <div>{{$errors->first('name')}}</div>
 
-  <p>
-    mail address <input type="address" name="mail" value={{$user->mail}}>
-  </p>
-  <div>{{$errors->first('mail')}}</div>
+<img src="{{asset('storage/'.Auth::user()->images)}}" alt="プロフィール画像">
+<div class = "profile-inner">
 
-  <p>
-    password <input type="password" name="password" >
-  </p>
-  <div>{{$errors->first('password')}}</div>
+  <form action="/profile/update" method="POST" enctype="multipart/form-data">
+    @csrf
+    <table>
+      <tr>
+        <th><label>user name</label></th>
+        <td><input type="text" name="name" value={{$user->username}}><span class = "attention">{{$errors->first('name')}}</span></td>
+      </tr>
 
-  <p>
-    password confirm <input type="password" name="password_confirmation" >
-  </p>
-  <div>{{$errors->first('password_confirm')}}</div>
+      <tr>
+        <th><label>mail address</label></th>
+        <td><input type="address" name="mail" value={{$user->mail}}><span class = "attention">{{$errors->first('mail')}}</span></td>
+      </tr>
 
-  <p>
-    bio <input type="text" name="bio" value={{$user->bio}}>
-  </p>
+      <tr>
+        <th><label>password</label></th>
+        <td><input type="password" name="password" ><span class = "attention">{{$errors->first('password')}}</span></td>
+      </tr>
 
-  <p>
-    icon image <input type="file" name="image">
-  </p>
-  <input type="hidden" value="{{$user->id}}" name="id">
-  <button type="submit" alt="更新ボタン">更新する</button>
+      <tr>
+        <th><label>password confirm</label></th>
+        <td><input type="password" name="password_confirmation" ><span class = "attention">{{$errors->first('password_confirm')}}</span></td>
+      </tr>
 
-</form>
+      <tr>
+        <th><label>bio</label></th>
+        <td><input type="text" name="bio" value={{$user->bio}}></td>
+      </tr>
 
+      <tr>
+        <th><label>icon image</label></th>
+        <td><input type="file" name="image"></td>
+      </tr>
+      <tr><input type="hidden" value="{{$user->id}}" name="id"></tr>
+    </table>
+    <button type="submit" class = "btn btn-danger update-btn" alt="更新ボタン">更新</button>
+
+  </form>
+</div>
+
+</div>
 @endsection
