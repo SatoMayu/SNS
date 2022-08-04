@@ -1,26 +1,26 @@
 @charset "UTF-8";
 
-html{
+html {
     height: 100%;
 }
 
-body{
+body {
     /* グラデーション */
     background-color: #D9AFD9;
-        background-image: linear-gradient(0deg, #D9AFD9 0%, #97D9E1 100%);
+    background-image: linear-gradient(0deg, #D9AFD9 0%, #97D9E1 100%);
 }
 
-header{
+header {
     text-align: center;
     margin-top: 10%;
     position: relative;
 }
 
-img{
+img {
     width: 150px;
 }
 
-.subtitle{
+.subtitle {
     color: white;
     font-size: 35px;
 }
@@ -29,49 +29,51 @@ img{
 #container {
     width: 350px;
     height: auto;
-    background-color: rgba(0,0,0,0.2);
+    background-color: rgba(0, 0, 0, 0.2);
     border-radius: 10px;
     position: absolute;
     top: 77%;
     left: 50%;
     transform: translateY(-77%) translateX(-50%);
-    padding:35px;
+    padding: 35px;
 }
 
-h3{
+h3 {
     color: white;
     font-size: 20px;
     padding: 10px;
     text-align: center;
 }
+
 /* フォーム */
 /* div {
     margin-bottom: 20px;
 } */
 
-.section{
+.section {
     /* padding-top: 15%; */
     padding-bottom: 8%;
 }
 
-label,input {
+label,
+input {
     display: block;
 }
 
-label{
+label {
     color: white;
     font-size: 20px;
     padding-top: 8%;
 }
 
-input{
-    border-radius:5px ;
+input {
+    border-radius: 5px;
     font-size: 20px;
     display: block;
     text-align: left;
 }
 
-input[type="submit"]{
+input[type="submit"] {
     color: white;
     display: block;
     margin-left: auto;
@@ -82,7 +84,7 @@ input[type="submit"]{
     padding: 3%;
 }
 
-p{
+p {
     color: white;
     font-size: 20px;
     padding: 10px;
@@ -96,6 +98,7 @@ p{
 #clear {
     margin: 0 auto;
 }
+
 .inner {
     margin-bottom: 80px;
 }
@@ -116,9 +119,4 @@ a {
 
 a:hover {
     text-decoration: none;
-}
-
-.btn {
-    /* display: flex;
-    justify-content: center; */
 }

@@ -7,7 +7,7 @@
     <form action="http://127.0.0.1:8000/posts/create" method="post">
       <img src="{{asset('storage/'.Auth::user()->images)}}" class="icon">
       @csrf
-      <textarea type="text" name="newPost" placeholder="投稿内容を入力してください" class="post-form_area"></textarea>
+      <textarea type="text" name="newPost" cols="60" rows="6" placeholder="投稿内容を入力してください" class="post-form_area"></textarea>
       <button type="submit"><img src="images/post.png" alt="投稿ボタン"></button>
     </form>
     <div>{{$errors->first('newPost')}}</div>
@@ -56,7 +56,7 @@
                   <form action="/posts/{{$list->id}}/update" method="POST">
                     @csrf
                     <!-- 変更した投稿内容の受け渡し -->
-                    <input type="text" name="upPost" class="modal_post" value="{{$list->post}}"></input>
+                    <input type="text" name="upPost" class="modal_post" value="{{$list->post}}" cols="60" rows="8"></input>
                     <!-- 変更した投稿のidの受け渡し -->
                     <input type="hidden" name="post_id" class="modal_id" placeholder="aiu"value="{{$list->id}}"></input>
                     <div class = "post-update-btn">
